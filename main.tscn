@@ -1,10 +1,14 @@
-[gd_scene load_steps=7 format=4 uid="uid://cmvme5thxvngx"]
+[gd_scene load_steps=9 format=4 uid="uid://cmvme5thxvngx"]
 
 [ext_resource type="Script" uid="uid://t1kj5wto0vlk" path="res://player.gd" id="1_h2yge"]
 [ext_resource type="Texture2D" uid="uid://befmevy5bmpdy" path="res://assets/icon.svg" id="2_1bvp3"]
+[ext_resource type="Script" uid="uid://dkmjdurbx5r3v" path="res://enemy.gd" id="3_1bvp3"]
 [ext_resource type="Texture2D" uid="uid://b8irsho2l4fo1" path="res://assets/green.png" id="3_lquwl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7mycd"]
+size = Vector2(64, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h2yge"]
 size = Vector2(64, 64)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_272bh"]
@@ -422,6 +426,16 @@ shape = SubResource("RectangleShape2D_7mycd")
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position_smoothing_enabled = true
 position_smoothing_speed = 6.0
+
+[node name="Enemy" type="CharacterBody2D" parent="."]
+script = ExtResource("3_1bvp3")
+
+[node name="Sprite2D" type="Sprite2D" parent="Enemy"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_1bvp3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy"]
+shape = SubResource("RectangleShape2D_h2yge")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 position = Vector2(-224, 96)
