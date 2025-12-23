@@ -18,5 +18,7 @@ func _physics_process(delta: float) -> void:
 		velocity.y = directiony * SPEED
 	else:
 		velocity.y = move_toward(velocity.x, 0, SPEED)
+	
+	look_at(get_global_mouse_position())
 
 	move_and_slide()
