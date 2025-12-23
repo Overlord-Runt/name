@@ -415,6 +415,7 @@ sources/0 = SubResource("TileSetAtlasSource_272bh")
 [node name="Player" type="CharacterBody2D" parent="."]
 position = Vector2(-352, 160)
 script = ExtResource("1_h2yge")
+metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Player"]
 scale = Vector2(0.5, 0.5)
@@ -429,6 +430,7 @@ position_smoothing_speed = 6.0
 
 [node name="Enemy" type="CharacterBody2D" parent="."]
 script = ExtResource("3_1bvp3")
+metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Enemy"]
 scale = Vector2(0.5, 0.5)
