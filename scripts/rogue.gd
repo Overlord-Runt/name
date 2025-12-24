@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+@onready var _animated_sprite = $AnimatedSprite2D
+@onready var _Hitbox = $Hitbox
 
 const SPEED = 300.0
 const dashSPEED = 900.0
@@ -26,13 +28,22 @@ func _physics_process(delta: float) -> void:
 		velocity.y = move_toward(velocity.x, 0, SPEED)
 	var mouse := get_global_mouse_position()
 	look_at(mouse)
+	_animated_sprite.rotation = -rotation
 	
-	dash(delta)		
+	attack(delta)		
 	
 	move_and_slide()
 
 
-func dash(delta: float):
+	if rotation > PI/2 or rotation < -PI/2:
+		_animated_sprite.play("default-left")
+		_Hitbox.position.x = 8
+	else:
+		_animated_sprite.play("default-right")
+		_Hitbox.position.x = -8
+
+
+func attack(delta: float):
 	var click := Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT)
 	lastDash += delta
 	if canAttack:

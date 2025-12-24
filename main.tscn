@@ -1,12 +1,39 @@
-[gd_scene load_steps=9 format=4 uid="uid://cmvme5thxvngx"]
+[gd_scene load_steps=12 format=4 uid="uid://cmvme5thxvngx"]
 
-[ext_resource type="Script" uid="uid://t1kj5wto0vlk" path="res://player.gd" id="1_h2yge"]
+[ext_resource type="Script" uid="uid://t1kj5wto0vlk" path="res://scripts/rogue.gd" id="1_h2yge"]
 [ext_resource type="Texture2D" uid="uid://befmevy5bmpdy" path="res://assets/icon.svg" id="2_1bvp3"]
-[ext_resource type="Script" uid="uid://dkmjdurbx5r3v" path="res://enemy.gd" id="3_1bvp3"]
+[ext_resource type="Texture2D" uid="uid://v273n3af472a" path="res://assets/Player-Sprites/Backward.svg" id="2_7mycd"]
+[ext_resource type="Texture2D" uid="uid://qc2e6m7fe1lt" path="res://assets/Player-Sprites/Forward.svg" id="2_lquwl"]
+[ext_resource type="Script" uid="uid://dkmjdurbx5r3v" path="res://scripts/enemy.gd" id="3_1bvp3"]
 [ext_resource type="Texture2D" uid="uid://b8irsho2l4fo1" path="res://assets/green.png" id="3_lquwl"]
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_lquwl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_7mycd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_7mycd")
+}],
+"loop": true,
+"name": &"default-left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 2.0,
+"texture": ExtResource("2_lquwl")
+}, {
+"duration": 2.0,
+"texture": ExtResource("2_lquwl")
+}],
+"loop": true,
+"name": &"default-right",
+"speed": 1.0
+}]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7mycd"]
-size = Vector2(64, 64)
+size = Vector2(10.299, 40.2471)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h2yge"]
 size = Vector2(64, 64)
@@ -415,22 +442,26 @@ sources/0 = SubResource("TileSetAtlasSource_272bh")
 [node name="Player" type="CharacterBody2D" parent="."]
 position = Vector2(-352, 160)
 script = ExtResource("1_h2yge")
-metadata/_edit_group_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="Player"]
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_1bvp3")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
+sprite_frames = SubResource("SpriteFrames_lquwl")
+animation = &"default-left"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+[node name="Hitbox" type="CollisionShape2D" parent="Player"]
+position = Vector2(8, 4.286)
+rotation = 3.14159
+scale = Vector2(3.84899, -1.40563)
 shape = SubResource("RectangleShape2D_7mycd")
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position_smoothing_enabled = true
 position_smoothing_speed = 6.0
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Player"]
+
 [node name="Enemy" type="CharacterBody2D" parent="."]
+scale = Vector2(1.01158, 1.17331)
 script = ExtResource("3_1bvp3")
-metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Enemy"]
 scale = Vector2(0.5, 0.5)
