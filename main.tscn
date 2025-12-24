@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://cmvme5thxvngx"]
+[gd_scene load_steps=14 format=4 uid="uid://cmvme5thxvngx"]
 
 [ext_resource type="Script" uid="uid://t1kj5wto0vlk" path="res://scripts/rogue.gd" id="1_h2yge"]
 [ext_resource type="Texture2D" uid="uid://befmevy5bmpdy" path="res://assets/icon.svg" id="2_1bvp3"]
@@ -34,6 +34,15 @@ animations = [{
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7mycd"]
 size = Vector2(10.299, 40.2471)
+
+[sub_resource type="Animation" id="Animation_7mycd"]
+resource_name = "Run"
+loop_mode = 1
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_272bh"]
+_data = {
+&"Run": SubResource("Animation_7mycd")
+}
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h2yge"]
 size = Vector2(64, 64)
@@ -445,10 +454,10 @@ script = ExtResource("1_h2yge")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
 sprite_frames = SubResource("SpriteFrames_lquwl")
-animation = &"default-left"
+animation = &"default-right"
 
 [node name="Hitbox" type="CollisionShape2D" parent="Player"]
-position = Vector2(8, 4.286)
+position = Vector2(-8, 4.286)
 rotation = 3.14159
 scale = Vector2(3.84899, -1.40563)
 shape = SubResource("RectangleShape2D_7mycd")
@@ -458,6 +467,9 @@ position_smoothing_enabled = true
 position_smoothing_speed = 6.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Player"]
+libraries = {
+&"": SubResource("AnimationLibrary_272bh")
+}
 
 [node name="Enemy" type="CharacterBody2D" parent="."]
 scale = Vector2(1.01158, 1.17331)
