@@ -58,7 +58,7 @@ func _physics_process(delta: float) -> void:
 
 
 func dash(delta: float):
-	var click := Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT)
+	var click := Input.is_action_just_pressed("dash")
 	lastDash += delta
 	if canDash:
 		thisDash += delta
