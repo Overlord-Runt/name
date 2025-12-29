@@ -1,94 +1,24 @@
-[gd_scene load_steps=18 format=4 uid="uid://cmvme5thxvngx"]
+[gd_scene load_steps=15 format=4 uid="uid://cmvme5thxvngx"]
 
-[ext_resource type="Script" uid="uid://t1kj5wto0vlk" path="res://scripts/rogue.gd" id="1_h2yge"]
+[ext_resource type="Script" uid="uid://c0obaoutjx6qx" path="res://archer.gd" id="1_7mycd"]
 [ext_resource type="Texture2D" uid="uid://befmevy5bmpdy" path="res://assets/icon.svg" id="2_1bvp3"]
-[ext_resource type="Texture2D" uid="uid://v273n3af472a" path="res://assets/Player-Sprites/Backward.svg" id="2_7mycd"]
-[ext_resource type="Texture2D" uid="uid://qc2e6m7fe1lt" path="res://assets/Player-Sprites/Forward.svg" id="2_lquwl"]
+[ext_resource type="Texture2D" uid="uid://bon0rhckmhqqn" path="res://assets/Player-Sprites/Archer/Forward.svg" id="2_7mycd"]
 [ext_resource type="Script" uid="uid://dkmjdurbx5r3v" path="res://scripts/enemy.gd" id="3_1bvp3"]
 [ext_resource type="Texture2D" uid="uid://b8irsho2l4fo1" path="res://assets/green.png" id="3_lquwl"]
+[ext_resource type="Texture2D" uid="uid://bj180jamairw6" path="res://assets/Player-Sprites/Archer/Arrow.svg" id="6_272bh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5vw27"]
 size = Vector2(9.73775, 27.5203)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_272bh"]
-size = Vector2(16, 27.6447)
-
-[sub_resource type="Animation" id="Animation_dg77c"]
-resource_name = "Attack_left"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Attack_Hitbox:disabled")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.9, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [true, false, false, true]
-}
-
-[sub_resource type="Animation" id="Animation_7mycd"]
-resource_name = "Attack_right"
-length = 5.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(-0.0333333, 0),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [ExtResource("2_lquwl"), ExtResource("2_lquwl")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Attack_Hitbox:disabled")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
 
 [sub_resource type="Animation" id="Animation_272bh"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/path = NodePath("Hitbox:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("2_lquwl")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Attack_Hitbox:disabled")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Hitbox:rotation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -97,38 +27,12 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_kek77"]
 resource_name = "idle_left"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("2_7mycd")]
-}
 
 [sub_resource type="Animation" id="Animation_5vw27"]
 resource_name = "idle_right"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("2_lquwl")]
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_272bh"]
 _data = {
-&"Attack_left": SubResource("Animation_dg77c"),
-&"Attack_right": SubResource("Animation_7mycd"),
 &"RESET": SubResource("Animation_272bh"),
 &"idle_left": SubResource("Animation_kek77"),
 &"idle_right": SubResource("Animation_5vw27")
@@ -539,21 +443,16 @@ sources/0 = SubResource("TileSetAtlasSource_272bh")
 [node name="Node" type="Node"]
 
 [node name="Player" type="CharacterBody2D" parent="."]
+texture_filter = 1
 position = Vector2(-352, 160)
-script = ExtResource("1_h2yge")
+script = ExtResource("1_7mycd")
 
 [node name="Sprite2D" type="Sprite2D" parent="Player"]
-texture = ExtResource("2_lquwl")
+texture = ExtResource("2_7mycd")
 
 [node name="Hitbox" type="CollisionShape2D" parent="Player"]
 scale = Vector2(3.28618, -1.74417)
 shape = SubResource("RectangleShape2D_5vw27")
-
-[node name="Attack_Hitbox" type="CollisionShape2D" parent="Player"]
-position = Vector2(24, -4)
-scale = Vector2(1, 0.868159)
-shape = SubResource("RectangleShape2D_272bh")
-disabled = true
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position_smoothing_enabled = true
@@ -581,3 +480,8 @@ shape = SubResource("RectangleShape2D_7mycd")
 position = Vector2(-224, 96)
 tile_map_data = PackedByteArray("AADe/wkAAAAAAAAAAADe/woAAAAAAAEAAADf/wkAAAABAAAAAADf/woAAAABAAEAAADe/wsAAAAAAAAAAADe/wwAAAAAAAEAAADf/wsAAAABAAAAAADf/wwAAAABAAEAAADe/w0AAAAAAAAAAADe/w4AAAAAAAEAAADf/w0AAAABAAAAAADf/w4AAAABAAEAAADe/w8AAAAAAAAAAADe/xAAAAAAAAEAAADf/w8AAAABAAAAAADf/xAAAAABAAEAAADe/xEAAAAAAAAAAADe/xIAAAAAAAEAAADf/xEAAAABAAAAAADf/xIAAAABAAEAAADe/xMAAAAAAAAAAADe/xQAAAAAAAEAAADf/xMAAAABAAAAAADf/xQAAAABAAEAAADe/xUAAAAAAAAAAADe/xYAAAAAAAEAAADf/xUAAAABAAAAAADf/xYAAAABAAEAAADg/xUAAAAAAAAAAADg/xYAAAAAAAEAAADh/xUAAAABAAAAAADh/xYAAAABAAEAAADi/xUAAAAAAAAAAADi/xYAAAAAAAEAAADj/xUAAAABAAAAAADj/xYAAAABAAEAAADk/xUAAAAAAAAAAADk/xYAAAAAAAEAAADl/xUAAAABAAAAAADl/xYAAAABAAEAAADm/xUAAAAAAAAAAADm/xYAAAAAAAEAAADn/xUAAAABAAAAAADn/xYAAAABAAEAAADo/xUAAAAAAAAAAADo/xYAAAAAAAEAAADp/xUAAAABAAAAAADp/xYAAAABAAEAAADq/xUAAAAAAAAAAADq/xYAAAAAAAEAAADr/xUAAAABAAAAAADr/xYAAAABAAEAAADs/xUAAAAAAAAAAADs/xYAAAAAAAEAAADt/xUAAAABAAAAAADt/xYAAAABAAEAAADu/xUAAAAAAAAAAADu/xYAAAAAAAEAAADv/xUAAAABAAAAAADv/xYAAAABAAEAAADw/xUAAAAAAAAAAADw/xYAAAAAAAEAAADx/xUAAAABAAAAAADx/xYAAAABAAEAAADy/xUAAAAAAAAAAADy/xYAAAAAAAEAAADz/xUAAAABAAAAAADz/xYAAAABAAEAAAD0/xUAAAAAAAAAAAD0/xYAAAAAAAEAAAD1/xUAAAABAAAAAAD1/xYAAAABAAEAAAD2/xUAAAAAAAAAAAD2/xYAAAAAAAEAAAD3/xUAAAABAAAAAAD3/xYAAAABAAEAAAD4/xUAAAAAAAAAAAD4/xYAAAAAAAEAAAD5/xUAAAABAAAAAAD5/xYAAAABAAEAAAD6/xUAAAAAAAAAAAD6/xYAAAAAAAEAAAD7/xUAAAABAAAAAAD7/xYAAAABAAEAAAD8/xUAAAAAAAAAAAD8/xYAAAAAAAEAAAD9/xUAAAABAAAAAAD9/xYAAAABAAEAAAD+/xUAAAAAAAAAAAD+/xYAAAAAAAEAAAD//xUAAAABAAAAAAD//xYAAAABAAEAAAAAABUAAAAAAAAAAAAAABYAAAAAAAEAAAABABUAAAABAAAAAAABABYAAAABAAEAAAACABUAAAAAAAAAAAACABYAAAAAAAEAAAADABUAAAABAAAAAAADABYAAAABAAEAAAAEABUAAAAAAAAAAAAEABYAAAAAAAEAAAAFABUAAAABAAAAAAAFABYAAAABAAEAAAAGABUAAAAAAAAAAAAGABYAAAAAAAEAAAAHABUAAAABAAAAAAAHABYAAAABAAEAAAAIABUAAAAAAAAAAAAIABYAAAAAAAEAAAAJABUAAAABAAAAAAAJABYAAAABAAEAAAAKABUAAAAAAAAAAAAKABYAAAAAAAEAAAALABUAAAABAAAAAAALABYAAAABAAEAAAAMABUAAAAAAAAAAAAMABYAAAAAAAEAAAANABUAAAABAAAAAAANABYAAAABAAEAAAAOABUAAAAAAAAAAAAOABYAAAAAAAEAAAAPABUAAAABAAAAAAAPABYAAAABAAEAAAAQABUAAAAAAAAAAAAQABYAAAAAAAEAAAARABUAAAABAAAAAAARABYAAAABAAEAAAASABUAAAAAAAAAAAASABYAAAAAAAEAAAATABUAAAABAAAAAAATABYAAAABAAEAAAAVABMAAAABAAAAAAAVABQAAAABAAEAAAAUABUAAAAAAAAAAAAUABYAAAAAAAEAAAAVABUAAAABAAAAAAAVABYAAAABAAEAAAAWABMAAAAAAAAAAAAWABQAAAAAAAEAAAAWABUAAAAAAAAAAAAWABYAAAAAAAEAAAAXABEAAAAAAAAAAAAXABIAAAAAAAEAAAAYABEAAAABAAAAAAAYABIAAAABAAEAAAAXABMAAAAAAAAAAAAXABQAAAAAAAEAAAAYABMAAAABAAAAAAAYABQAAAABAAEAAAAZAA8AAAAAAAAAAAAZABAAAAAAAAEAAAAaAA8AAAABAAAAAAAaABAAAAABAAEAAAAZABEAAAAAAAAAAAAZABIAAAAAAAEAAAAaABEAAAABAAAAAAAaABIAAAABAAEAAADe/wcAAAAAAAAAAADe/wgAAAAAAAEAAADf/wcAAAABAAAAAADf/wgAAAABAAEAAADe/wUAAAAAAAAAAADe/wYAAAAAAAEAAADf/wUAAAABAAAAAADf/wYAAAABAAEAAADe/wMAAAAAAAAAAADe/wQAAAAAAAEAAADf/wMAAAABAAAAAADf/wQAAAABAAEAAADe/wEAAAAAAAAAAADe/wIAAAAAAAEAAADf/wEAAAABAAAAAADf/wIAAAABAAEAAADe////AAAAAAAAAADe/wAAAAAAAAEAAADf////AAABAAAAAADf/wAAAAABAAEAAADe//3/AAAAAAAAAADe//7/AAAAAAEAAADf//3/AAABAAAAAADf//7/AAABAAEAAADe//v/AAAAAAAAAADe//z/AAAAAAEAAADf//v/AAABAAAAAADf//z/AAABAAEAAADg//v/AAAAAAAAAADg//z/AAAAAAEAAADh//v/AAABAAAAAADh//z/AAABAAEAAADi//v/AAAAAAAAAADi//z/AAAAAAEAAADj//v/AAABAAAAAADj//z/AAABAAEAAADk//v/AAAAAAAAAADk//z/AAAAAAEAAADl//v/AAABAAAAAADl//z/AAABAAEAAADm//v/AAAAAAAAAADm//z/AAAAAAEAAADn//v/AAABAAAAAADn//z/AAABAAEAAADo//v/AAAAAAAAAADo//z/AAAAAAEAAADp//v/AAABAAAAAADp//z/AAABAAEAAADq//v/AAAAAAAAAADq//z/AAAAAAEAAADr//v/AAABAAAAAADr//z/AAABAAEAAADs//v/AAAAAAAAAADs//z/AAAAAAEAAADt//v/AAABAAAAAADt//z/AAABAAEAAADu//v/AAAAAAAAAADu//z/AAAAAAEAAADv//v/AAABAAAAAADv//z/AAABAAEAAADw//v/AAAAAAAAAADw//z/AAAAAAEAAADx//v/AAABAAAAAADx//z/AAABAAEAAADy//v/AAAAAAAAAADy//z/AAAAAAEAAADz//v/AAABAAAAAADz//z/AAABAAEAAAD0//v/AAAAAAAAAAD0//z/AAAAAAEAAAD1//v/AAABAAAAAAD1//z/AAABAAEAAAD2//v/AAAAAAAAAAD2//z/AAAAAAEAAAD3//v/AAABAAAAAAD3//z/AAABAAEAAAD4//v/AAAAAAAAAAD4//z/AAAAAAEAAAD5//v/AAABAAAAAAD5//z/AAABAAEAAAD6//v/AAAAAAAAAAD6//z/AAAAAAEAAAD7//v/AAABAAAAAAD7//z/AAABAAEAAAD8//v/AAAAAAAAAAD8//z/AAAAAAEAAAD9//v/AAABAAAAAAD9//z/AAABAAEAAAD+//v/AAAAAAAAAAD+//z/AAAAAAEAAAD///v/AAABAAAAAAD///z/AAABAAEAAAAAAPv/AAAAAAAAAAAAAPz/AAAAAAEAAAABAPv/AAABAAAAAAABAPz/AAABAAEAAAACAPv/AAAAAAAAAAACAPz/AAAAAAEAAAADAPv/AAABAAAAAAADAPz/AAABAAEAAAAEAPv/AAAAAAAAAAAEAPz/AAAAAAEAAAAFAPv/AAABAAAAAAAFAPz/AAABAAEAAAAGAPv/AAAAAAAAAAAGAPz/AAAAAAEAAAAHAPv/AAABAAAAAAAHAPz/AAABAAEAAAAIAPv/AAAAAAAAAAAIAPz/AAAAAAEAAAAJAPv/AAABAAAAAAAJAPz/AAABAAEAAAAKAPv/AAAAAAAAAAAKAPz/AAAAAAEAAAALAPv/AAABAAAAAAALAPz/AAABAAEAAAAMAPv/AAAAAAAAAAAMAPz/AAAAAAEAAAANAPv/AAABAAAAAAANAPz/AAABAAEAAAAOAPv/AAAAAAAAAAAOAPz/AAAAAAEAAAAPAPv/AAABAAAAAAAPAPz/AAABAAEAAAAQAPv/AAAAAAAAAAAQAPz/AAAAAAEAAAARAPv/AAABAAAAAAARAPz/AAABAAEAAAASAPv/AAAAAAAAAAASAPz/AAAAAAEAAAATAPv/AAABAAAAAAATAPz/AAABAAEAAAAUAPv/AAAAAAAAAAAUAPz/AAAAAAEAAAAVAPv/AAABAAAAAAAVAPz/AAABAAEAAAAWAPv/AAAAAAAAAAAWAPz/AAAAAAEAAAAXAPv/AAABAAAAAAAXAPz/AAABAAEAAAAYAPv/AAAAAAAAAAAYAPz/AAAAAAEAAAAZAPv/AAABAAAAAAAZAPz/AAABAAEAAAA=")
 tile_set = SubResource("TileSet_5vw27")
+
+[node name="Arrow" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-408, 152)
+texture = ExtResource("6_272bh")
