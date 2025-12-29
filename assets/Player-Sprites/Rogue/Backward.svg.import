@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://v273n3af472a"
-path="res://.godot/imported/Backward.svg-b533ec32c8886be0418ce41f316ade0e.ctex"
+path="res://.godot/imported/Backward.svg-4c47d85741d715a1e341721216be8c82.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Player-Sprites/Backward.svg"
-dest_files=["res://.godot/imported/Backward.svg-b533ec32c8886be0418ce41f316ade0e.ctex"]
+source_file="res://assets/Player-Sprites/Rogue/Backward.svg"
+dest_files=["res://.godot/imported/Backward.svg-4c47d85741d715a1e341721216be8c82.ctex"]
 
 [params]
 

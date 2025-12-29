@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://qc2e6m7fe1lt"
-path="res://.godot/imported/Forward.svg-85f895de80e99ba08517c54b907e2999.ctex"
+uid="uid://dfygt8fdmq431"
+path="res://.godot/imported/forward-walk.png-8b11e84f4c076a010310413551433f7f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Player-Sprites/Forward.svg"
-dest_files=["res://.godot/imported/Forward.svg-85f895de80e99ba08517c54b907e2999.ctex"]
+source_file="res://assets/Player-Sprites/Archer/forward-walk.png"
+dest_files=["res://.godot/imported/forward-walk.png-8b11e84f4c076a010310413551433f7f.ctex"]
 
 [params]
 
@@ -32,6 +32,3 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
-svg/scale=1.0
-editor/scale_with_editor_scale=false
-editor/convert_colors_with_editor_theme=false

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 18 7" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+    <g transform="matrix(1,0,0,1,-77,0)">
+        <g id="Arrow" transform="matrix(0.28125,0,0,0.109375,77,0)">
+            <rect x="0" y="0" width="64" height="64" style="fill:none;"/>
+            <g transform="matrix(3.555556,0,0,9.142857,-1070.222222,-2596.571429)">
+                <use xlink:href="#_Image1" x="300" y="283" width="20px" height="9px"/>
+            </g>
+        </g>
+    </g>
+    <defs>
+        <image id="_Image1" width="20px" height="9px" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAJCAYAAAAywQxIAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAWklEQVQokWNgoAX48uXLf2qZxUSJoYUFuRh6GHEZxsPDw0iKgf0TJjPCDYyz5SDLy8LGqSj8/gmTGVkYGBgYpm1/g6GYKBcaM2C4kIVUQ9ABzCAUQM1YpjoAAC8lIXc62MaOAAAAAElFTkSuQmCC"/>
+    </defs>
+</svg>
