@@ -70,7 +70,6 @@ func attack(delta: float):
 	else:
 		canAttack = false
 	if canAttack:
-		_animation.play("Attack_left")
 		velocity.y = dashSPEEDy*sin(rotation)
 		velocity.x = dashSPEEDx*cos(rotation)
 		if thisDash > (dashCooldown + dashLength):
