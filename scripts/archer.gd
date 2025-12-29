@@ -85,6 +85,7 @@ func dash(delta: float):
 			
 			
 func attack():
-	var new_arrow_instance = ArrowScene.instantiate() 
-	get_parent().add_child(new_arrow_instance)
-	new_arrow_instance.global_position = global_position
+	if Input.is_action_just_pressed("leftClick"):
+		var new_arrow_instance = ArrowScene.instantiate() 
+		get_parent().add_child(new_arrow_instance)
+		new_arrow_instance.position = self.position

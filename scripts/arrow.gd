@@ -8,12 +8,12 @@ var SPEED = 300
 func _ready() -> void:
 	var mouse := get_global_mouse_position()
 	look_at(mouse)
-	if not $VisibleOnScreenNotifier2D.is_on_screen():
-		queue_free()
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	velocity.x = SPEED*sin(rotation)
 	velocity.y = SPEED*cos(rotation)
-	
+	if not $VisibleOnScreenNotifier2D.is_on_screen():
+		queue_free()
 	
