@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+@onready var _sprite = $Sprite2D
+@onready var _hitbox = $Hitbox
 
 const SPEED = 100.0
 const health = 20
@@ -13,5 +15,7 @@ func _physics_process(delta: float) -> void:
 	
 	velocity.x = speedX
 	velocity.y = speedY
+	_sprite.rotation = -rotation
+	_hitbox.rotation = -rotation
 
 	move_and_slide()
