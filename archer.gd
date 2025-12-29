@@ -9,7 +9,7 @@ const dashSPEEDy = 900.0
 const dashSPEEDx = 1300.0
 const JUMP_VELOCITY = -900.0
 
-var canAttack = false
+var canDash = false
 var dashCooldown = 0.5
 var lastDash = 3.0
 var dashLength = 0.05
@@ -45,31 +45,34 @@ func _physics_process(delta: float) -> void:
 
 
 	if rotation > PI/2 or rotation < -PI/2:
-		_animation.play("idle_left")
-		_Hitbox.global_position.x = _sprite.global_position.x
-		_Hitbox.global_position.y = _sprite.global_position.y + 8
+		if directionx:
+			_animation.play("walking_left")
+		else:
+			_animation.play("idle_left")
+
 	else:
-		_animation.play("idle_right")
-		_Hitbox.global_position.x = _sprite.global_position.x
-		_Hitbox.global_position.y = _sprite.global_position.y + 8
+		if directionx:
+			_animation.play("walking_right")
+		else:
+			_animation.play("idle_right")
 
 
 func dash(delta: float):
 	var click := Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT)
 	lastDash += delta
-	if canAttack:
+	if canDash:
 		thisDash += delta
 	else:
 		thisDash = 0.0	
 		
 	if lastDash > dashCooldown:
 		if click && thisDash < dashCooldown:
-			canAttack = true
-			_animation.play("Attack_left")
+			canDash = true
+
 			thisDash = dashCooldown
 	else:
-		canAttack = false
-	if canAttack:
+		canDash = false
+	if canDash:
 		velocity.y = dashSPEEDy*sin(rotation)
 		velocity.x = dashSPEEDx*cos(rotation)
 		if thisDash > (dashCooldown + dashLength):
