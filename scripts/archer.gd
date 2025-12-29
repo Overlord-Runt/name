@@ -3,6 +3,8 @@ extends CharacterBody2D
 @onready var _sprite = $Sprite2D
 @onready var _Hitbox = $Hitbox
 @onready var _animation = $AnimationPlayer
+@onready var _arrow = get_node("root/Arrow")
+
 
 const SPEED = 300.0
 const dashSPEEDy = 900.0
@@ -40,8 +42,6 @@ func _physics_process(delta: float) -> void:
 
 	
 	dash(delta)		
-	
-	move_and_slide()
 
 
 	if rotation > PI/2 or rotation < -PI/2:
@@ -55,6 +55,11 @@ func _physics_process(delta: float) -> void:
 			_animation.play("walking_right")
 		else:
 			_animation.play("idle_right")
+			
+			
+	attack()
+			
+	move_and_slide()
 
 
 func dash(delta: float):
@@ -77,4 +82,9 @@ func dash(delta: float):
 		velocity.x = dashSPEEDx*cos(rotation)
 		if thisDash > (dashCooldown + dashLength):
 			lastDash = 0.0
-	
+			
+			
+			
+func attack():
+	if Input.is_action_just_pressed("leftClick"):
+		_arrow.attack()
