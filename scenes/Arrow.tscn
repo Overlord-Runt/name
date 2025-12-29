@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://cdll6lk5ivym7"]
+
+[ext_resource type="Script" uid="uid://2deoy6ot1lvk" path="res://scripts/arrow.gd" id="1_3pw4r"]
+[ext_resource type="Texture2D" uid="uid://bj180jamairw6" path="res://assets/Player-Sprites/Archer/Arrow.svg" id="2_qhgny"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vclp8"]
+size = Vector2(16, 16)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Arrow" type="CharacterBody2D" parent="."]
+position = Vector2(-792, 344)
+script = ExtResource("1_3pw4r")
+
+[node name="Sprite2D" type="Sprite2D" parent="Arrow"]
+texture = ExtResource("2_qhgny")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Arrow"]
+scale = Vector2(1, 0.328)
+shape = SubResource("RectangleShape2D_vclp8")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="Arrow"]

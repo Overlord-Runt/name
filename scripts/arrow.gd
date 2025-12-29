@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-var SPEED = 3000
+var SPEED = 300
 
 
 
@@ -8,14 +8,12 @@ var SPEED = 3000
 func _ready() -> void:
 	var mouse := get_global_mouse_position()
 	look_at(mouse)
-
+	if not $VisibleOnScreenNotifier2D.is_on_screen():
+		queue_free()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	velocity.y = SPEED*sin(rotation)
-	velocity.x = SPEED*cos(rotation)
+	velocity.x = SPEED*sin(rotation)
+	velocity.y = SPEED*cos(rotation)
 	
-	if not $VisibleOnScreenNotifier2D.is_on_screen():
-		queue_free()
-func attack():
-	queue_redraw()
+	

@@ -3,7 +3,7 @@ extends CharacterBody2D
 @onready var _sprite = $Sprite2D
 @onready var _Hitbox = $Hitbox
 @onready var _animation = $AnimationPlayer
-@onready var _arrow = get_node("root/Arrow")
+const ArrowScene = preload("res://scenes/Arrow.tscn")
 
 
 const SPEED = 300.0
@@ -84,7 +84,7 @@ func dash(delta: float):
 			lastDash = 0.0
 			
 			
-			
 func attack():
-	if Input.is_action_just_pressed("leftClick"):
-		_arrow.attack()
+	var new_arrow_instance = ArrowScene.instantiate() 
+	get_parent().add_child(new_arrow_instance)
+	new_arrow_instance.global_position = global_position
