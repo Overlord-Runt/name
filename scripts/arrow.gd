@@ -17,3 +17,4 @@ func _process(delta: float) -> void:
 	if not $VisibleOnScreenNotifier2D.is_on_screen():
 		queue_free()
 	
+	move_and_slide()

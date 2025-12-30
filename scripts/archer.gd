@@ -3,6 +3,7 @@ extends CharacterBody2D
 @onready var _sprite = $Sprite2D
 @onready var _Hitbox = $Hitbox
 @onready var _animation = $AnimationPlayer
+@onready var _marker = $Marker2D
 const ArrowScene = preload("res://scenes/Arrow.tscn")
 
 
@@ -88,4 +89,4 @@ func attack():
 	if Input.is_action_just_pressed("leftClick"):
 		var new_arrow_instance = ArrowScene.instantiate() 
 		get_parent().add_child(new_arrow_instance)
-		new_arrow_instance.position = self.position
+		new_arrow_instance.global_position = _marker.position 

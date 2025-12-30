@@ -619,8 +619,12 @@ tile_set = SubResource("TileSet_kek77")
 
 [node name="Player" type="CharacterBody2D" parent="."]
 texture_filter = 1
-position = Vector2(-648, 384)
+position = Vector2(-704, 408)
 script = ExtResource("1_7mycd")
+
+[node name="Marker2D" type="Marker2D" parent="Player"]
+show_behind_parent = true
+position = Vector2(24, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="Player"]
 texture_filter = 1
